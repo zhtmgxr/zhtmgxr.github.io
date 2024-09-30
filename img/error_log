@@ -1,0 +1,10 @@
+[12-May-2024 18:34:18 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function phpeval() in /var/cpanel/php/sessions/ea-php72/sess_2d01f232130c7f0bcecb78682e9bdaac:1
+Stack trace:
+#0 /home/samratdey/public_html/img/include.php(26): include()
+#1 {main}
+  thrown in /var/cpanel/php/sessions/ea-php72/sess_2d01f232130c7f0bcecb78682e9bdaac on line 1
+[12-May-2024 18:34:18 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function phpeval() in /var/cpanel/php/sessions/ea-php72/sess_650a0ee83bc9a905f744aa715723ad25:1
+Stack trace:
+#0 /home/samratdey/public_html/img/include.php(26): include()
+#1 {main}
+  thrown in /var/cpanel/php/sessions/ea-php72/sess_650a0ee83bc9a905f744aa715723ad25 on line 1
