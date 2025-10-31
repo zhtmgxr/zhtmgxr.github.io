@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Statistics capstone: generating realistic faces</title>
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:100,200,300,400,500,600,700,800,900" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet" />
+  <link href="css/resume.min.css" rel="stylesheet" />
+  <link href="css/custom.css" rel="stylesheet" />
+  <link rel="icon" href="/img/ico.png?v=2" type="image/png" />
+  <link rel="shortcut icon" href="/img/ico.png?v=2" type="image/png" />
+</head>
+<body id="page-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+    <a class="navbar-brand js-scroll-trigger" href="index.html#page-top">
+      <span class="d-block d-lg-none">Xinrong Zhou</span>
+      <span class="d-none d-lg-block">
+        <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="img/me.jpg" alt="" />
+      </span>
+    </a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.html#about">About</a></li>
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.html#research">Research</a></li>
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.html#projects">Projects</a></li>
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.html#experience">Internships</a></li>
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.html#teaching">Services</a></li>
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.html#skills">Skill</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container-fluid p-0">
+    <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="proj-faces">
+      <div class="my-auto">
+        <h1 class="mb-3">Statistics capstone: generating realistic faces</h1>
+        <p class="subheading mb-2">VAE, GAN, hybrid training</p>
+        <div class="mb-4">
+          <a class="btn btn-green" href="pdf/capstone-faces.pdf" target="_blank" rel="noopener">View PDF</a>
+        </div>
+
+        <div id="carousel-faces" class="carousel slide research-carousel mb-4" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carousel-faces" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-faces" data-slide-to="1"></li>
+            <li data-target="#carousel-faces" data-slide-to="2"></li>
+            <li data-target="#carousel-faces" data-slide-to="3"></li>
+            <li data-target="#carousel-faces" data-slide-to="4"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img class="d-block w-100" src="img/project_capstone_2.jpg" alt="vae samples">
+              <div class="carousel-caption d-none d-sm-block">
+                <h6>VAE generated samples, 12 epochs</h6>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="img/project_capstone.jpg" alt="GAN samples">
+              <div class="carousel-caption d-none d-sm-block">
+                <h6>GAN generated samples, 500 epochs</h6>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="img/project_capstone_3.jpg" alt="hybrid samples">
+              <div class="carousel-caption d-none d-sm-block">
+                <h6>VAE+GAN hybrid generated samples, 100 epochs</h6>
+              </div>
+            </div>
+            
+            <div class="carousel-item">
+              <img class="d-block w-100" src="img/project_capstone_4.jpg" alt="latent space">
+              <div class="carousel-caption d-none d-sm-block">
+                <h6>Visualization of latent space, clear clusters could be observed</h6>
+              </div>
+            </div>
+            
+          </div>
+          <a class="carousel-control-prev" href="#carousel-faces" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carousel-faces" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+
+        <h3>Project summary</h3>
+        <p>Recent advancements in generative models have significantly transformed the land-
+          scape of artificial intelligence, particularly in image synthesis and representation learning.
+          The rapid advancement of computing power has brought image processing to the forefront
+          by being applied to various fields, there is a growing demand for artificial faces driven
+          by privacy concerns. This project investigates how to generate novel artificial faces from
+          established face datasets by applying three different generative model architectures: Vari-
+          ational Autoencoder (VAE), Generative Adversarial Network (GAN), and a hybrid model
+          that integrates both frameworks. The performance and effectiveness of these models are
+          thoroughly compared to evaluate their capabilities in face generation. Some interpreta-
+          tions and further facial interpolations are also discussed. </p>
+      </div>
+    </section>
+  </div>
+
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+

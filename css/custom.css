@@ -1,0 +1,130 @@
+/* Starry background (faded) and base typography */
+body {
+  background: linear-gradient(rgba(255,255,255,0.65), rgba(255,255,255,0.65)), url('../img/stars.jpg') center center / cover fixed no-repeat;
+  font-size: 1.2rem;
+  color: #111;
+}
+
+/* Sidebar (was orange) now translucent over stars */
+#sideNav {
+  background: rgba(0,0,0,0.65) !important;
+  backdrop-filter: saturate(1.1) blur(2px);
+}
+
+/* Bigger, normal-case headings and nav */
+h1, h2 { text-transform: none !important; }
+h1 { font-size: 3.6rem; }
+h2 { font-size: 2.4rem; }
+.navbar-nav .nav-link { text-transform: none !important; }
+.text-uppercase { text-transform: none !important; }
+.subheading { text-transform: none !important; }
+
+/* Content colors */
+.resume-section { background: rgba(255,255,255,0.0); }
+.resume-section .my-auto, .resume-section .w-100 { color: #111; }
+.subheading { color: #222; }
+
+/* Accent color: dark green, override orange */
+.text-primary { color: #064e3b !important; }
+font[color="orangered"] { color: #064e3b !important; }
+
+/* Links */
+a { color: #064e3b; }
+a:hover { color: #0b7a5a; }
+
+/* Research detail carousels: unify size + visible arrows */
+.research-carousel { max-width: 1000px; margin: 0 auto; }
+.research-carousel .carousel-item {
+  height: 600px;               /* uniform visual box */
+  background: rgba(0,0,0,0.02);
+}
+.research-carousel .carousel-item.active,
+.research-carousel .carousel-item-next,
+.research-carousel .carousel-item-prev {
+  display: flex;               /* only visible slides become flex containers */
+  align-items: center;
+  justify-content: center;
+}
+.research-carousel .carousel-item img {
+  max-height: 480px;            /* shrink but never crop */
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+.research-carousel .carousel-indicators {   /* move dots below image */
+  position: static;
+  margin-top: .5rem;
+}
+.carousel-control-prev-icon, .carousel-control-next-icon {
+  width: 2.25rem; height: 2.25rem;
+  filter: drop-shadow(0 0 2px rgba(0,0,0,0.7));
+  background-size: 60% 60%;
+  background-color: rgba(0,0,0,0.25);
+  border-radius: 50%;
+}
+.research-carousel .carousel-control-prev,
+.research-carousel .carousel-control-next {
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2rem;                  /* tighter clickable area */
+  opacity: .9;
+  z-index: 5;
+}
+.research-carousel .carousel-control-prev { left: -1.25rem; }
+.research-carousel .carousel-control-next { right: -1.25rem; }
+
+/* Force visible chevrons regardless of Bootstrap version */
+.research-carousel .carousel-control-prev-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23ffffff' viewBox='0 0 8 8'%3e%3cpath d='M5.25 0l-4 4 4 4 1.5-1.5L4.25 4l2.5-2.5L5.25 0z'/%3e%3c/svg%3e") !important;
+}
+.research-carousel .carousel-control-next-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23ffffff' viewBox='0 0 8 8'%3e%3cpath d='M2.75 0l-1.5 1.5L3.75 4 .25 6.5 1.75 8l4-4-4-4z'/%3e%3c/svg%3e") !important;
+}
+
+/* Caption style for research images */
+.research-carousel .carousel-caption {
+  top: .25rem; left: .25rem; right: auto; bottom: auto;
+  background: rgba(255,255,255,0.88);
+  padding: .25rem .5rem;
+  border-radius: .25rem;
+  color: #111;
+  text-shadow: none;
+}
+.research-carousel .carousel-caption h6 { margin: 0; font-weight: 600; text-transform: none !important; letter-spacing: normal; }
+/* Ensure headings are not forced uppercase anywhere */
+h3, h4, h5, h6 { text-transform: none !important; }
+
+/* Dark green PDF button */
+.btn-green { background: #064e3b; color: #fff; border-color: #064e3b; }
+.btn-green:hover { background: #0b7a5a; border-color: #0b7a5a; color: #fff; }
+
+/* Uniform thumbnails for project previews (no crop, shrink to fit) */
+.project-thumb-wrap { display: flex; align-items: center; justify-content: center; }
+.project-thumb {
+  height: 330px;           /* target uniform height */
+  width: auto;             /* keep aspect ratio */
+  max-width: 100%;         /* do not overflow column */
+  object-fit: contain;     /* never crop */
+  display: block;
+}
+
+#skills .list-icons i {
+  font-size: 56px;          /* uniform brand/logo size */
+  line-height: 1;
+  margin: 0 10px;
+  vertical-align: middle;
+}
+
+/* Ensure Services bullets are visible as list markers */
+#teaching ul { list-style: disc; margin-left: 1.25rem; padding-left: 0.25rem; }
+
+/* Make clickable project/research blocks feel like cards */
+.block-link { display: block; color: inherit; text-decoration: none; }
+.block-link:hover, .block-link:focus, .block-link:active { text-decoration: none !important; color: inherit; }
+.block-link:hover { background: rgba(6, 78, 59, 0.06); border-radius: .5rem; }
+/* keep titles in clickable blocks dark green */
+.block-link h3 { color: #064e3b !important; }
+.block-link:hover h3 { color: #0b7a5a !important; }
+
