@@ -128,3 +128,10 @@ h3, h4, h5, h6 { text-transform: none !important; }
 .block-link h3 { color: #064e3b !important; }
 .block-link:hover h3 { color: #0b7a5a !important; }
 
+/* Increase profile image size */
+@media (min-width: 992px) {
+  #sideNav .navbar-brand .img-profile {
+    max-width: 14rem;   /* Increased from 10rem */
+    max-height: 20rem;  /* Increased height for portrait images */
+  }
+}
