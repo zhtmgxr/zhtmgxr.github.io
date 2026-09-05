@@ -1,8 +1,10 @@
 /* Starry background (faded) and base typography */
 body {
   background: linear-gradient(rgba(255,255,255,0.65), rgba(255,255,255,0.65)), url('../img/stars.jpg') center center / cover fixed no-repeat;
-  font-size: 1.2rem;
-  color: #111;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.72;
+  color: #24292f;
 }
 
 /* Sidebar (was orange) now translucent over stars */
@@ -13,8 +15,7 @@ body {
 
 /* Bigger, normal-case headings and nav */
 h1, h2 { text-transform: none !important; }
-h1 { font-size: 3.6rem; }
-h2 { font-size: 2.4rem; }
+
 .navbar-nav .nav-link { text-transform: none !important; }
 .text-uppercase { text-transform: none !important; }
 .subheading { text-transform: none !important; }
@@ -128,10 +129,76 @@ h3, h4, h5, h6 { text-transform: none !important; }
 .block-link h3 { color: #064e3b !important; }
 .block-link:hover h3 { color: #0b7a5a !important; }
 
-/* Increase profile image size */
+/* Profile image: portrait oval, larger than the template default */
 @media (min-width: 992px) {
   #sideNav .navbar-brand .img-profile {
-    max-width: 14rem;   /* Increased from 10rem */
-    max-height: 20rem;  /* Increased height for portrait images */
+    width: 12.5rem; height: 16.5rem;
+    max-width: 12.5rem; max-height: 16.5rem;
+    object-fit: cover; object-position: center 32%;
+    border-radius: 50%;
+    border: .4rem solid rgba(255,255,255,.22);
   }
 }
+/* Social / resume links under the header */
+.social-row { display: flex; flex-wrap: wrap; gap: 1.25rem; align-items: center; }
+.social-row .social-link {
+  display: inline-flex; align-items: center; gap: .45rem;
+  font-size: 1.05rem; font-weight: 600; color: #064e3b;
+  text-decoration: none; border-bottom: 1px solid transparent;
+  transition: border-color .15s ease, color .15s ease;
+}
+.social-row .social-link:hover { color: #0b7a5a; border-bottom-color: #0b7a5a; }
+.social-row .social-link i { font-size: 1.2rem; }
+@media (max-width: 575px) { .social-row { gap: .9rem; } .social-row .social-link { font-size: .95rem; } }
+
+
+/* ---- About / intro block: alignment, measure and rhythm ---- */
+/* Bootstrap's .col-12 adds a 15px gutter, which pushed "Education" and
+   "Honors and awards" out of alignment with the name and the intro text. */
+#about .col-12 { padding-left: 0; padding-right: 0; }
+
+/* One measure for the whole column, so the intro paragraph and the lists
+   wrap at the same width instead of one being half as wide as the other. */
+#about .my-auto { max-width: 60rem; }
+
+#about .social-row { margin-bottom: 1.9rem !important; }
+#about p.intro { margin-bottom: 2.4rem !important; }
+#about .col-12.mt-5 { margin-top: 2.4rem !important; }
+#about h3 { margin-bottom: .95rem; }
+
+#about ul.education, #about ul.awards { padding-left: 1.15rem; margin-bottom: 0; }
+#about ul.awards li { margin-bottom: .3rem; }
+#about ul.education li { margin-bottom: 1rem; }
+#about .entry-meta { font-size: .9em; color: #4a5157; margin-top: .15rem; }
+
+
+/* ================= Typography =================
+   Body: IBM Plex Sans. Headings: Newsreader, a text serif with an open
+   aperture that holds up at large sizes. Sizes are ~40% down from the
+   template defaults, which were tuned for a resume template rather than
+   a research page. */
+h1, h2, h3,
+h1 .text-primary,
+.navbar-brand {
+  font-family: "Newsreader", Georgia, "Times New Roman", serif;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+}
+h1 { font-size: 3.02rem; line-height: 1.16; }
+h2 { font-size: 2.01rem; line-height: 1.28; margin-bottom: 2.2rem; }
+h3 { font-size: 1.38rem; line-height: 1.35; }
+
+.subheading,
+.navbar-nav .nav-link,
+.badge,
+.social-row .social-link,
+.resume-date {
+  font-family: "IBM Plex Sans", -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+.subheading { font-size: .95rem; font-weight: 500; color: #4a5157; letter-spacing: 0; }
+.navbar-nav .nav-link { font-size: 1rem; letter-spacing: .01em; }
+.badge { font-weight: 500; font-size: .82rem; }
+
+/* Keep lines readable rather than letting them run the full window width. */
+.resume-content p { max-width: 74ch; }
