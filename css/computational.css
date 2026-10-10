@@ -45,5 +45,7 @@ body.is-reading #tree-scene canvas{pointer-events:none}
   .tree-spot{padding-top:18px;padding-bottom:18px}
 }
 
-/* Bold serif headings, with sans-serif body copy. */
-.hero-name,.resume-section h1,.resume-section h2,.resume-section h3,#story-title{font-family:Georgia,'Times New Roman',serif;font-weight:700;letter-spacing:-.025em}
+/* Light editorial serif headings, with sans-serif body copy. */
+.hero-name,.resume-section h1,.resume-section h2,.resume-section h3,#story-title{font-family:'Newsreader',Georgia,serif;font-weight:400;letter-spacing:-.025em}
+
+.hero-name em{font-size:.88em;font-weight:400;font-style:italic}
