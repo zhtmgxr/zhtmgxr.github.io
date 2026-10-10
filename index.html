@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PE8S6SWYZ1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-  
-    gtag('config', 'G-PE8S6SWYZ1');
-  </script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Xinrong (Claire) Zhou is a Master of Science in Machine Learning student at Carnegie Mellon University working on evaluation-driven AI systems, structured multimodal generation and open-set recognition."><meta name="author" content="Xinrong (Claire) Zhou">
@@ -24,49 +15,53 @@
 	<link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" /><!-- Custom styles for this template -->
 	<link href="css/resume.min.css" rel="stylesheet" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-	<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,700&display=swap" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,700;1,6..72,400&display=swap" rel="stylesheet" />
 	<link href="css/custom.css" rel="stylesheet" />
 	<link rel="icon" href="/img/ico.png?v=2" type="image/png" />
 	<link rel="shortcut icon" href="/img/ico.png?v=2" type="image/png" />
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css"/>
+<link rel="stylesheet" href="css/site-theme.css?v=d8857d0370b8" />
+<link rel="stylesheet" href="css/computational.css?v=588bbaafa2bb" />
+<script type="importmap">{"imports":{"three":"./js/three.module.js"}}</script>
 </head>
 <body data-gr-ext-installed="" data-new-gr-c-s-check-loaded="14.1086.0" data-new-gr-c-s-loaded="14.1086.0" id="page-top">
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav"><a class="navbar-brand js-scroll-trigger" href="#page-top"><span class="d-block d-lg-none">Xinrong (Claire) Zhou</span> <span class="d-none d-lg-block"> <img alt="" class="img-fluid img-profile rounded-circle mx-auto mb-2" src="img/me.png" /> </span> </a><button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse" type="button"></button>
-<div class="collapse navbar-collapse" id="navbarSupportedContent">
-<ul class="navbar-nav">
-	<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
-	<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#honors">Honors</a></li>
-	<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#research">Research</a></li>
-	<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#publications">Publications</a></li>
-	<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#projects">Projects</a></li>
-	<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience">Internships</a></li>
-	<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#teaching">Service</a></li>
-	<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">Skills</a></li>
-	<!-- <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#gallery">My Gallery</a></li> -->
-	<!-- <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Knowledge">Knowledge Transfer</a></li> -->
-</ul>
+<header class="site-header">
+<a class="wordmark" href="#page-top" aria-label="Claire Zhou home">cz<span>.</span></a>
+<nav aria-label="Main navigation"><a href="#about">About</a><a href="#research">Research</a><a href="#projects">Projects</a><a href="#experience">Internships</a><a href="#teaching">Service</a></nav>
+</header>
+<section id="tree-hero" aria-labelledby="hero-title">
+<div class="hero-shell">
+  <div class="hero-copy">
+    <div class="hero-identity">
+      <div class="hero-identity-text">
+        <h1 id="hero-title" class="hero-name">Xinrong <span>(Claire) Zhou</span></h1>
+      </div>
+    </div>
+    <div class="hero-description"><p>Hi there👋! I'm a master's student in Machine Learning at <a href="https://www.ml.cmu.edu/" target="_blank" rel="noopener">Carnegie Mellon University</a>, working with <a href="https://www.cs.cmu.edu/~morency/" target="_blank" rel="noopener">Prof. Louis-Philippe Morency</a>. </p><p>Before CMU I studied Statistics and Computer Science at <a href="https://www.cuhk.edu.hk/english/index.html" target="_blank" rel="noopener">The Chinese University of Hong Kong</a>. </p><p>My research focuses on turning multimodal models into reliable, evaluable systems for complex decision making. Glad you're here.</p></div>
+  <div class="field-actions"><a class="hero-linkedin" href="https://www.linkedin.com/in/xinrong-zhou-8713b6255" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a><a id="say-hello" href="mailto:clairez3@andrew.cmu.edu">Say hello <span aria-hidden="true">↗</span></a></div>
+  </div>
+  <div class="hero-visual">
+    <div id="tree-scene" aria-hidden="true"></div>
+    <h2 class="scene-title">Room to <em>grow.</em></h2>
+  <div class="scene-controls"><button id="tree-motion" type="button" aria-label="Pause tree animation" title="Pause tree animation" aria-pressed="false">Ⅱ</button></div>
+  </div>
+  <div id="tree-hotspots" aria-label="Stories in the scene">
+    <button class="tree-spot" data-story="roots" aria-expanded="false" aria-controls="tree-story"><span>01</span><span class="spot-label">The roots</span><b>↗</b></button>
+    <button class="tree-spot" data-story="branches" aria-expanded="false" aria-controls="tree-story"><span>02</span><span class="spot-label">The questions</span><b>↗</b></button>
+    <button class="tree-spot" data-story="seat" aria-expanded="false" aria-controls="tree-story"><span>03</span><span class="spot-label">Stay a little</span><b>↗</b></button>
+  </div>
+  <aside id="tree-story" hidden aria-labelledby="story-title"><button id="close-story" aria-label="Close story">×</button><p id="story-index"></p><h2 id="story-title"></h2><p id="story-text"></p><div class="story-actions"><a id="story-link" href="#about">More about me ↗</a></div></aside>
+  <p id="tree-loading" role="status">Initializing the living system…</p><p id="scene-status" role="status" class="sr-only"></p>
 </div>
-</nav>
+</section>
 
 <div class="container-fluid p-0">
 <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="about">
 <div class="my-auto">
-<h1 class="mb-0">Xinrong (Claire) <span class="text-primary">Zhou</span></h1>
-<div class="subheading mb-2">MS in Machine Learning, School of Computer Science &middot; Carnegie Mellon University</div>
-
-<div class="subheading mb-3"><font color="black">Pittsburgh, PA &middot;</font> <a href="mailto:clairez3@andrew.cmu.edu">clairez3@andrew.cmu.edu</a></div>
-
-<div class="social-row mb-5">
-  <a class="social-link" href="https://www.linkedin.com/in/xinrong-zhou-8713b6255" target="_blank" rel="noopener"><i class="fa fa-linkedin-square"></i> LinkedIn</a>
-</div>
-
-<p class="intro mb-5"><font color="black">
-Hi there👋! I'm a master's student in Machine Learning at <a href="https://www.ml.cmu.edu/" target="_blank" rel="noopener">Carnegie Mellon University</a>, working with <a href="https://www.cs.cmu.edu/~morency/" target="_blank" rel="noopener">Prof. Louis-Philippe Morency</a>. Before CMU I studied Statistics and Computer Science at <a href="https://www.cuhk.edu.hk/english/index.html" target="_blank" rel="noopener">The Chinese University of Hong Kong</a>. My research focuses on turning multimodal models into reliable, evaluable systems for complex decision making. Glad you're here.
-</font></p>
-
-
-<div class="col-12">
-  <h3>Education</h3>
+<div class="about-layout">
+<figure class="about-photo"><img src="img/me.png" width="768" height="1024" alt="Xinrong (Claire) Zhou by a lake" loading="lazy"></figure>
+<div class="about-education">
+  <h2 class="mb-5">Education</h2>
   <ul class="education">
     <li>Master of Science in Machine Learning, School of Computer Science, Carnegie Mellon University
       <div class="entry-meta">Sep 2026 &ndash; Dec 2027 (expected) &middot; Pittsburgh, PA</div>
@@ -76,11 +71,13 @@ Hi there👋! I'm a master's student in Machine Learning at <a href="https://www
     </li>
   </ul>
 </div>
+</div>
 
           
 
 
 
+</div>
 </section>
 
 <!-- awards merged into About section above -->
@@ -109,6 +106,17 @@ Hi there👋! I'm a master's student in Machine Learning at <a href="https://www
 <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="research">
 <div class="my-auto">
 <h2 class="mb-5">Research</h2>
+<div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5" id="research-multicomp">
+  <div class="resume-content">
+    <h3 class="mb-0">Multimodal learning for psychiatric symptom assessment</h3>
+    <div class="subheading mb-3">Graduate researcher &middot; MultiComp Lab, Carnegie Mellon University &middot; Supervisor: Prof. Louis-Philippe Morency</div>
+    <p>I study how language, speech and facial behavior can be combined to assess psychiatric symptoms from recorded clinical interviews. The work spans LLM-based symptom rating from transcripts, testing the added value of non-verbal signals (voice, face, head motion), longitudinal modeling of symptom change, and analyses of which interview topics and behavioural cues drive each prediction. Ongoing work.</p>
+  </div>
+  <div class="col-lg-4 col-md-4 col-sm-12">
+    <img class="img-fluid" src="img/research_multicomp.png" width="860" height="484" alt="Illustration of speech and facial behavior signals in clinical interviews">
+  </div>
+</div>
+
 <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
   <div class="resume-content">
     <h3 class="mb-0">LLM-driven clinical simulation for medical education</h3>
@@ -425,5 +433,6 @@ Hi there👋! I'm a master's student in Machine Learning at <a href="https://www
 <center><font color="black">&copy; Copyright 2026 <b>Xinrong (Claire) Zhou</b></font></center>
 </footer>
 </div>
-<grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></body>
+<grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration><script src="js/scene-layout.js?v=e6bc8e885f61"></script><script type="module" src="js/computational.js?v=911aec97496f"></script>
+</body>
 </html>
