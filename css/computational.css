@@ -44,3 +44,6 @@ body.is-reading #tree-scene canvas{pointer-events:none}
   .hero-visual{height:clamp(420px,calc(100svh - 224px),730px)}
   .tree-spot{padding-top:18px;padding-bottom:18px}
 }
+
+/* Bold serif headings, with sans-serif body copy. */
+.hero-name,.resume-section h1,.resume-section h2,.resume-section h3,#story-title{font-family:Georgia,'Times New Roman',serif;font-weight:700;letter-spacing:-.025em}
