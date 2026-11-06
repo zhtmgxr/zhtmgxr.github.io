@@ -16,8 +16,9 @@ hero.addEventListener('keydown',e=>{if(e.key==='Escape'&&!panel.hidden)closeStor
 // Authored generative geometry: bundled paths with a common trunk and branching endpoints.
 // The scene does not depend on optional contact or decorative UI elements.
 const reduced=matchMedia('(prefers-reduced-motion: reduce)');
-let paused=reduced.matches,visible=true,time=0,last=0,raf=0,growing=!reduced.matches,structure=false;
-let growth=reduced.matches?1:0,growthElapsed=0,pulse=-10,w=1,h=1,compact=false,drag=null,exploring=false;
+let paused=reduced.matches,visible=true,time=0,last=0,raf=0,structure=false;
+const growth=1;
+let pulse=-10,w=1,h=1,compact=false,drag=null,exploring=false;
 const view={yaw:0,pitch:0,zoom:1};
 
 try{
@@ -81,25 +82,25 @@ try{
  function cameraUpdate(){const target=V(0,4.7,0),offset=V(10,5.5,23);const sph=new THREE.Spherical().setFromVector3(offset);sph.theta+=view.yaw;sph.phi=THREE.MathUtils.clamp(sph.phi+view.pitch,.55,1.6);sph.radius=19.8*view.zoom*Math.max(1,1.05/camera.aspect);camera.position.copy(target).add(offset.setFromSpherical(sph));camera.lookAt(target);camera.updateMatrixWorld();}
 
  function draw(){U.uTime.value=time;U.uGrowth.value=growth;U.uPulse.value=pulse;terminalGroup.visible=growth>.98;linksMesh.visible=growth>.98;cameraUpdate();renderer.render(scene,camera);host.dataset.growth=growth.toFixed(3);host.dataset.yaw=view.yaw.toFixed(3);host.dataset.zoom=view.zoom.toFixed(2);host.dataset.time=time.toFixed(2);host.dataset.mode=structure?'structure':'signals';host.dataset.pulse=pulse.toFixed(2);host.dataset.influence=String(U.uPointer.value.x<99);}
- function growthState(){host.dataset.phase=growing?'growing':'interactive';status.textContent=growing?'The tree is growing.':'The tree is ready. Move your pointer to influence the branches.';}
- function loop(stamp){raf=0;if(!visible||document.hidden||(paused&&pulse<0))return;const dt=Math.min((stamp-last)/1000,.05);last=stamp;if(!paused)time+=dt;if(pulse>=0){pulse+=dt*.38;if(pulse>1.2)pulse=-10;}if(growing&&!paused){growthElapsed=Math.min(1,growthElapsed+dt/4.5);growth=growthElapsed*growthElapsed*(3-2*growthElapsed);if(growthElapsed===1){growing=false;growth=1;growthState();}}draw();raf=requestAnimationFrame(loop);}
+ function readyState(){host.dataset.phase='interactive';status.textContent='The tree is ready. Move your pointer to influence the branches.';}
+ function loop(stamp){raf=0;if(!visible||document.hidden||(paused&&pulse<0))return;const dt=Math.min((stamp-last)/1000,.05);last=stamp;if(!paused)time+=dt;if(pulse>=0){pulse+=dt*.38;if(pulse>1.2)pulse=-10;}draw();raf=requestAnimationFrame(loop);}
  function wake(){if(!raf&&visible&&!document.hidden){last=performance.now();raf=requestAnimationFrame(loop);}}
  function setPaused(p){paused=p;motion.setAttribute('aria-pressed',String(paused));motion.setAttribute('aria-label',paused?'Play tree animation':'Pause tree animation');motion.textContent=paused?'▷':'Ⅱ';motion.title=paused?'Play tree animation':'Pause tree animation';if(paused){pulse=-10;cancelAnimationFrame(raf);raf=0;draw();}else wake();}
- motion.addEventListener('click',()=>setPaused(!paused));reduced.addEventListener('change',()=>{if(reduced.matches){growth=1;growing=false;growthState();}setPaused(reduced.matches);});
+ motion.addEventListener('click',()=>setPaused(!paused));reduced.addEventListener('change',()=>setPaused(reduced.matches));
  document.querySelector('#say-hello')?.addEventListener('click',()=>{pulse=0;draw();wake();});
  function explore(){exploring=true;hero.classList.add('is-exploring');}
  function reset(){exploring=false;view.yaw=view.pitch=0;view.zoom=1;hero.classList.remove('is-exploring');draw();}
  document.querySelector('.wordmark').addEventListener('click',reset);
  const canvas=renderer.domElement,ray=new THREE.Raycaster(),plane=new THREE.Plane(),hit=V(0,0,0),mouse=new THREE.Vector2();host.removeAttribute('aria-hidden');canvas.tabIndex=0;canvas.setAttribute('role','img');canvas.setAttribute('aria-label','Interactive branching system. Drag to orbit, hover to influence, click to send a signal. Arrow keys rotate. Home resets.');
- canvas.addEventListener('pointerdown',e=>{if(growing||e.button!==0)return;drag={id:e.pointerId,x:e.clientX,y:e.clientY,yaw:view.yaw,pitch:view.pitch,moved:false};canvas.setPointerCapture(e.pointerId);});
- canvas.addEventListener('pointermove',e=>{if(growing)return;const rect=canvas.getBoundingClientRect();mouse.set((e.clientX-rect.left)/rect.width*2-1,-(e.clientY-rect.top)/rect.height*2+1);ray.setFromCamera(mouse,camera);plane.setFromNormalAndCoplanarPoint(camera.getWorldDirection(V(0,0,0)),V(0,5,0));if(ray.ray.intersectPlane(plane,hit))U.uPointer.value.copy(hit);if(drag&&drag.id===e.pointerId){const dx=e.clientX-drag.x,dy=e.clientY-drag.y;if(Math.hypot(dx,dy)>5){drag.moved=true;explore();canvas.classList.add('is-dragging');view.yaw=drag.yaw-dx*.006;view.pitch=THREE.MathUtils.clamp(drag.pitch-dy*.004,-.45,.45);}}draw();});
+ canvas.addEventListener('pointerdown',e=>{if(e.button!==0)return;drag={id:e.pointerId,x:e.clientX,y:e.clientY,yaw:view.yaw,pitch:view.pitch,moved:false};canvas.setPointerCapture(e.pointerId);});
+ canvas.addEventListener('pointermove',e=>{const rect=canvas.getBoundingClientRect();mouse.set((e.clientX-rect.left)/rect.width*2-1,-(e.clientY-rect.top)/rect.height*2+1);ray.setFromCamera(mouse,camera);plane.setFromNormalAndCoplanarPoint(camera.getWorldDirection(V(0,0,0)),V(0,5,0));if(ray.ray.intersectPlane(plane,hit))U.uPointer.value.copy(hit);if(drag&&drag.id===e.pointerId){const dx=e.clientX-drag.x,dy=e.clientY-drag.y;if(Math.hypot(dx,dy)>5){drag.moved=true;explore();canvas.classList.add('is-dragging');view.yaw=drag.yaw-dx*.006;view.pitch=THREE.MathUtils.clamp(drag.pitch-dy*.004,-.45,.45);}}draw();});
  canvas.addEventListener('pointerleave',()=>{U.uPointer.value.set(100,100,100);draw();});
  function end(e){if(!drag||drag.id!==e.pointerId)return;if(!drag.moved&&e.type==='pointerup'){pulse=0;wake();}drag=null;canvas.classList.remove('is-dragging');if(canvas.hasPointerCapture(e.pointerId))canvas.releasePointerCapture(e.pointerId);}
  canvas.addEventListener('pointerup',end);canvas.addEventListener('pointercancel',end);canvas.addEventListener('lostpointercapture',()=>{drag=null;canvas.classList.remove('is-dragging');});
- canvas.addEventListener('keydown',e=>{if(growing)return;if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','+','=','-','Home','Enter'].includes(e.key))return;e.preventDefault();if(e.key==='Home'){reset();return;}if(e.key==='Enter'){pulse=0;wake();return;}explore();if(e.key==='ArrowLeft')view.yaw-=.12;if(e.key==='ArrowRight')view.yaw+=.12;if(e.key==='ArrowUp')view.pitch=Math.max(-.45,view.pitch-.08);if(e.key==='ArrowDown')view.pitch=Math.min(.45,view.pitch+.08);if(['+','='].includes(e.key))view.zoom=Math.max(.65,view.zoom-.1);if(e.key==='-')view.zoom=Math.min(1.4,view.zoom+.1);draw();});
+ canvas.addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','+','=','-','Home','Enter'].includes(e.key))return;e.preventDefault();if(e.key==='Home'){reset();return;}if(e.key==='Enter'){pulse=0;wake();return;}explore();if(e.key==='ArrowLeft')view.yaw-=.12;if(e.key==='ArrowRight')view.yaw+=.12;if(e.key==='ArrowUp')view.pitch=Math.max(-.45,view.pitch-.08);if(e.key==='ArrowDown')view.pitch=Math.min(.45,view.pitch+.08);if(['+','='].includes(e.key))view.zoom=Math.max(.65,view.zoom-.1);if(e.key==='-')view.zoom=Math.min(1.4,view.zoom+.1);draw();});
  function resize(){w=host.clientWidth;h=host.clientHeight;compact=w<801;renderer.setSize(w,h,false);camera.aspect=w/h;camera.fov=38;camera.updateProjectionMatrix();draw();}
  new ResizeObserver(resize).observe(host);new IntersectionObserver(([e])=>{visible=e.isIntersecting;if(visible)wake();else{cancelAnimationFrame(raf);raf=0;}},{threshold:.02}).observe(host);document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(raf);raf=0;}else wake();});
- resize();growthState();setPaused(paused);hero.classList.add('tree-ready');document.querySelector('#tree-loading').hidden=true;host.dataset.state='ready';growthState();canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();setPaused(true);status.textContent='Reload to restore the interactive system.';});
+ resize();readyState();setPaused(paused);hero.classList.add('tree-ready');document.querySelector('#tree-loading').hidden=true;host.dataset.state='ready';readyState();canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();setPaused(true);status.textContent='Reload to restore the interactive system.';});
 }catch(error){
  console.error(error);
  host.dataset.state='error';host.dataset.error=error instanceof Error?error.message:String(error);
