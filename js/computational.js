@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 const host=document.querySelector('#tree-scene'),hero=document.querySelector('#tree-hero');
-const status=document.querySelector('#scene-status'),motion=document.querySelector('#tree-motion');
+const status=document.querySelector('#scene-status');
 const stories={
  roots:{number:'01 / THE ROOTS',title:'A place to begin.',text:'Statistics gave me a way to ask careful questions. Computer science gave me a way to build with them. Both still shape how I work.',label:'My background ↗',href:'#about'},
  branches:{number:'02 / THE QUESTIONS',title:'Following the next question.',text:'There’s still a lot I’d like to understand.',label:'My research ↗',href:'#research'},
@@ -85,8 +85,8 @@ try{
  function readyState(){host.dataset.phase='interactive';status.textContent='The tree is ready. Move your pointer to influence the branches.';}
  function loop(stamp){raf=0;if(!visible||document.hidden||(paused&&pulse<0))return;const dt=Math.min((stamp-last)/1000,.05);last=stamp;if(!paused)time+=dt;if(pulse>=0){pulse+=dt*.38;if(pulse>1.2)pulse=-10;}draw();raf=requestAnimationFrame(loop);}
  function wake(){if(!raf&&visible&&!document.hidden){last=performance.now();raf=requestAnimationFrame(loop);}}
- function setPaused(p){paused=p;motion.setAttribute('aria-pressed',String(paused));motion.setAttribute('aria-label',paused?'Play tree animation':'Pause tree animation');motion.textContent=paused?'▷':'Ⅱ';motion.title=paused?'Play tree animation':'Pause tree animation';if(paused){pulse=-10;cancelAnimationFrame(raf);raf=0;draw();}else wake();}
- motion.addEventListener('click',()=>setPaused(!paused));reduced.addEventListener('change',()=>setPaused(reduced.matches));
+ function setPaused(p){paused=p;if(paused){pulse=-10;cancelAnimationFrame(raf);raf=0;draw();}else wake();}
+ reduced.addEventListener('change',()=>setPaused(reduced.matches));
  document.querySelector('#say-hello')?.addEventListener('click',()=>{pulse=0;draw();wake();});
  function explore(){exploring=true;hero.classList.add('is-exploring');}
  function reset(){exploring=false;view.yaw=view.pitch=0;view.zoom=1;hero.classList.remove('is-exploring');draw();}
